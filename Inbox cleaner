@@ -1,0 +1,17 @@
+# Clear Outlook Email Inbox
+
+const Outlook = require('outlook');
+
+async function clearInbox() {
+    try {
+        const messages = await Outlook.getMessages();
+        for (const message of messages) {
+            await Outlook.deleteMessage(message.id);
+        }
+        console.log('Inbox cleared successfully.');
+    } catch (error) {
+        console.error('Error clearing inbox:', error);
+    }
+}
+
+clearInbox();
